@@ -14,7 +14,7 @@ using CardLoaderPlugin;
 namespace CardLoaderMod
 {
     [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
-    [BepInDependency("cyantist.inscryption.cardloader", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("cyantist.inscryption.api", BepInDependency.DependencyFlags.HardDependency)]
     public class Plugin : BaseUnityPlugin
     {
         private const string PluginGuid = "cyantist.inscryption.customcardexample";
