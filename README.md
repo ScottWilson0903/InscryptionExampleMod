@@ -1,4 +1,4 @@
-# CardLoaderExampleMod
+# ExampleMod
 ## Example mod for Inscryption API made by Cyantist
 
 This plugin is a BepInEx plugin made for Inscryption to create custom cards for the API by Cyantist.
