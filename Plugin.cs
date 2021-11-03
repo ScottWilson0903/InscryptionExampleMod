@@ -9,7 +9,7 @@ using System.IO;
 using DiskCardGame;
 using HarmonyLib;
 using UnityEngine;
-using CardLoaderPlugin;
+using APIPlugin;
 
 namespace CardLoaderMod
 {
