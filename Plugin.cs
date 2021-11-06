@@ -56,8 +56,8 @@ namespace CardLoaderMod
             List<DialogueEvent.Line> lines = new List<DialogueEvent.Line>();
             DialogueEvent.Line line = new DialogueEvent.Line();
             line.text = "New abilities? I didn't authorise homebrew!";
-            lines.add(line);
-            info.abilityLearnedDialogue = new DialogueEvent.LineSet(lines)
+            lines.Add(line);
+            info.abilityLearnedDialogue = new DialogueEvent.LineSet(lines);
 
             byte[] imgBytes = System.IO.File.ReadAllBytes("BepInEx/plugins/CardLoader/Artwork/new.png");
             Texture2D tex = new Texture2D(2,2);
