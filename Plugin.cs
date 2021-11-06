@@ -28,18 +28,20 @@ namespace CardLoaderMod
             AddBears();
             NewAbility ability1 = AddAbility();
             ChangeWolf(ability1.ability);
-
         }
 
         private void AddBears(){
             List<CardMetaCategory> metaCategories = new List<CardMetaCategory>();
             metaCategories.Add(CardMetaCategory.ChoiceNode);
             metaCategories.Add(CardMetaCategory.Rare);
+
             List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = new List<CardAppearanceBehaviour.Appearance>();
             appearanceBehaviour.Add(CardAppearanceBehaviour.Appearance.RareCardBackground);
+
             byte[] imgBytes = System.IO.File.ReadAllBytes("BepInEx/plugins/CardLoader/Artwork/eightfuckingbears.png");
             Texture2D tex = new Texture2D(2,2);
             tex.LoadImage(imgBytes);
+
             new NewCard("Eight_Bears", metaCategories, CardComplexity.Simple, CardTemple.Nature,"8 fucking bears!",32,48,description:"Kill this abomination please",cost:3,appearanceBehaviour:appearanceBehaviour, tex:tex);
         }
 
@@ -47,13 +49,20 @@ namespace CardLoaderMod
     		{
             AbilityInfo info = ScriptableObject.CreateInstance<AbilityInfo>();
             info.powerLevel = 0;
-            info.triggerText = "New abilities?";
-            info.rulebookName = "NEW";
-            info.rulebookDescription = "New abilities? :O";
+            info.rulebookName = "Example Ability";
+            info.rulebookDescription = "Example ability which adds a PiggyBank!";
             info.metaCategories = new List<AbilityMetaCategory> {AbilityMetaCategory.Part1Rulebook, AbilityMetaCategory.Part1Modular};
+
+            List<DialogueEvent.Line> lines = new List<DialogueEvent.Line>();
+            DialogueEvent.Line line = new DialogueEvent.Line();
+            line.text = "New abilities? I didn't authorise homebrew!";
+            lines.add(line);
+            info.abilityLearnedDialogue = new DialogueEvent.LineSet(lines)
+
             byte[] imgBytes = System.IO.File.ReadAllBytes("BepInEx/plugins/CardLoader/Artwork/new.png");
             Texture2D tex = new Texture2D(2,2);
             tex.LoadImage(imgBytes);
+
             NewAbility ability = new NewAbility(info,typeof(NewTestAbility),tex);
             NewTestAbility.ability = ability.ability;
             return ability;
@@ -66,42 +75,42 @@ namespace CardLoaderMod
 
         public class NewTestAbility : AbilityBehaviour
       	{
-      		public override Ability Ability
-      		{
-      			get
-      			{
-      				return ability;
-      			}
-      		}
+        		public override Ability Ability
+        		{
+          			get
+          			{
+          				return ability;
+          			}
+        		}
 
-          public static Ability ability;
+            public static Ability ability;
 
-      		public override bool RespondsToResolveOnBoard()
-      		{
-      			return true;
-      		}
+        		public override bool RespondsToResolveOnBoard()
+        		{
+        			   return true;
+        		}
 
-      		public override IEnumerator OnResolveOnBoard()
-      		{
-      			yield return base.PreSuccessfulTriggerSequence();
-      			yield return new WaitForSeconds(0.2f);
-      			Singleton<ViewManager>.Instance.SwitchToView(View.Default, false, false);
-      			yield return new WaitForSeconds(0.25f);
-      			if (RunState.Run.consumables.Count < 3)
-      			{
-      				RunState.Run.consumables.Add("PiggyBank");
-      				Singleton<ItemsManager>.Instance.UpdateItems(false);
-      			}
-      			else
-      			{
-      				base.Card.Anim.StrongNegationEffect();
-      				yield return new WaitForSeconds(0.2f);
-      				Singleton<ItemsManager>.Instance.ShakeConsumableSlots(0f);
-      			}
-      			yield return new WaitForSeconds(0.2f);
-      			yield return base.LearnAbility(0f);
-      			yield break;
-      		}
+        		public override IEnumerator OnResolveOnBoard()
+        		{
+          			yield return base.PreSuccessfulTriggerSequence();
+          			yield return new WaitForSeconds(0.2f);
+          			Singleton<ViewManager>.Instance.SwitchToView(View.Default, false, false);
+          			yield return new WaitForSeconds(0.25f);
+          			if (RunState.Run.consumables.Count < 3)
+          			{
+            				RunState.Run.consumables.Add("PiggyBank");
+            				Singleton<ItemsManager>.Instance.UpdateItems(false);
+          			}
+          			else
+          			{
+            				base.Card.Anim.StrongNegationEffect();
+            				yield return new WaitForSeconds(0.2f);
+            				Singleton<ItemsManager>.Instance.ShakeConsumableSlots(0f);
+          			}
+          			yield return new WaitForSeconds(0.2f);
+          			yield return base.LearnAbility(0f);
+          			yield break;
+          		}
       	}
     }
 
