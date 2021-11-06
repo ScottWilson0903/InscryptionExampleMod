@@ -26,17 +26,8 @@ namespace CardLoaderMod
             Logger.LogInfo($"Loaded {PluginName}!");
 
             AddBears();
-            ChangeWolf();
-            AbilityInfo info = ScriptableObject.CreateInstance<AbilityInfo>();
-            info.ability = (Ability)100;
-            info.powerLevel = 0;
-            info.triggerText = "New abilities?";
-            info.rulebookName = "NEW";
-            info.metaCategories = new List<AbilityMetaCategory> {AbilityMetaCategory.Part1Rulebook, AbilityMetaCategory.Part1Modular};
-            byte[] imgBytes = System.IO.File.ReadAllBytes("BepInEx/plugins/CardLoader/Artwork/new.png");
-            Texture2D tex = new Texture2D(2,2);
-            tex.LoadImage(imgBytes);
-            new NewAbility((Ability)100,info,typeof(NewTestAbility),tex);
+            NewAbility ability1 = AddAbility();
+            ChangeWolf(ability1.ability);
 
         }
 
@@ -52,30 +43,44 @@ namespace CardLoaderMod
             new NewCard("Eight_Bears", metaCategories, CardComplexity.Simple, CardTemple.Nature,"8 fucking bears!",32,48,description:"Kill this abomination please",cost:3,appearanceBehaviour:appearanceBehaviour, tex:tex);
         }
 
-        private void ChangeWolf(){
-          List<Ability> abilities = new List<Ability> {(Ability)100};
+        private NewAbility AddAbility()
+    		{
+            AbilityInfo info = ScriptableObject.CreateInstance<AbilityInfo>();
+            info.powerLevel = 0;
+            info.triggerText = "New abilities?";
+            info.rulebookName = "NEW";
+            info.rulebookDescription = "New abilities? :O";
+            info.metaCategories = new List<AbilityMetaCategory> {AbilityMetaCategory.Part1Rulebook, AbilityMetaCategory.Part1Modular};
+            byte[] imgBytes = System.IO.File.ReadAllBytes("BepInEx/plugins/CardLoader/Artwork/new.png");
+            Texture2D tex = new Texture2D(2,2);
+            tex.LoadImage(imgBytes);
+            NewAbility ability = new NewAbility(info,typeof(NewTestAbility),tex);
+            NewTestAbility.ability = ability.ability;
+            return ability;
+    		}
+
+        private void ChangeWolf(Ability ability){
+          List<Ability> abilities = new List<Ability> {ability};
           new CustomCard("Wolf", baseAttack:10, abilities:abilities);
         }
 
         public class NewTestAbility : AbilityBehaviour
       	{
-      		// Token: 0x17000294 RID: 660
-      		// (get) Token: 0x060013EF RID: 5103 RVA: 0x0004409A File Offset: 0x0004229A
       		public override Ability Ability
       		{
       			get
       			{
-      				return (Ability)100;
+      				return ability;
       			}
       		}
 
-      		// Token: 0x060013F0 RID: 5104 RVA: 0x0000F2FE File Offset: 0x0000D4FE
+          public static Ability ability;
+
       		public override bool RespondsToResolveOnBoard()
       		{
       			return true;
       		}
 
-      		// Token: 0x060013F1 RID: 5105 RVA: 0x0004409E File Offset: 0x0004229E
       		public override IEnumerator OnResolveOnBoard()
       		{
       			yield return base.PreSuccessfulTriggerSequence();
@@ -99,4 +104,5 @@ namespace CardLoaderMod
       		}
       	}
     }
+
 }
