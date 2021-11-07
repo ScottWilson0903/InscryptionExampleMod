@@ -11,7 +11,7 @@ To install this plugin first you need to install BepInEx as a mod loader for Ins
 You will also need to install the [CardLoaderPlugin](https://github.com/ScottWilson0903/InscryptionAPI)
 To install ExampleMod with just the default example card included "Eight Fucking Bears!" and example modified wolf, you simply need to copy **API.dll** from [releases](https://github.com/ScottWilson0903/InscryptionAPI/releases) and the **Artwork** folder from the source code zip in [releases](https://github.com/ScottWilson0903/InscryptionAPI/releases) to a **CardLoader** folder inside **Inscryption/BepInEx/plugins**.
 
-To generate your own cards, you will need to either pass in an already created **CardInfo** object to the **NewCard** constructor, or you will need to pass all the required and optional parameters to the **NewCard** constructor as done in **Plugin.AddBears**. Any png files should be added to the **Artwork** folder and should be 114x94 pixels.
+To generate your own cards, you will need to either pass in an already created **CardInfo** object to the **NewCard.Add** function, or you will need to pass all the required and optional parameters to the **NewCard** constructor as done in **Plugin.AddBears**. Any png files should be added to the **Artwork** folder and should be 114x94 pixels.
 To alter existing cards you will need to pass the card name and the values you want to change to the optional parameters in the **CustomCard** constructor, as done in **Plugin.ChangeWolf**.
 To add custom abilities you will need a class inheriting **AbilityBehaviour**, an **AbilityInfo** and a texture which should be 49x49 pixels and also placed in the **Artwork** folder.
 
