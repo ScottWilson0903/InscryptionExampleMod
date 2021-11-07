@@ -42,7 +42,7 @@ namespace CardLoaderMod
             Texture2D tex = new Texture2D(2,2);
             tex.LoadImage(imgBytes);
 
-            new NewCard("Eight_Bears", metaCategories, CardComplexity.Simple, CardTemple.Nature,"8 fucking bears!",32,48,description:"Kill this abomination please",cost:3,appearanceBehaviour:appearanceBehaviour, tex:tex);
+            NewCard.Add("Eight_Bears", metaCategories, CardComplexity.Simple, CardTemple.Nature,"8 fucking bears!",32,48,description:"Kill this abomination please",cost:3,appearanceBehaviour:appearanceBehaviour, tex:tex);
         }
 
         private NewAbility AddAbility()
@@ -70,7 +70,7 @@ namespace CardLoaderMod
 
         private void ChangeWolf(Ability ability){
           List<Ability> abilities = new List<Ability> {ability};
-          new CustomCard("Wolf", baseAttack:10, abilities:abilities);
+          new CustomCard("Wolf") {baseAttack=10, abilities=abilities};
         }
 
         public class NewTestAbility : AbilityBehaviour
