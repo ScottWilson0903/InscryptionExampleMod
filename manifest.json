@@ -1,6 +1,6 @@
 {
     "name": "ExampleMod",
-    "version_number": "1.1.0",
+    "version_number": "1.3.0",
     "website_url": "https://github.com/ScottWilson0903/InscryptionExampleMod",
     "description": "This plugin is a BepInEx plugin made for Inscryption to create custom cards and abilities for the API by Cyantist.",
     "dependencies": [

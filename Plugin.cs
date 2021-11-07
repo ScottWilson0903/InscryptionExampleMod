@@ -38,7 +38,7 @@ namespace CardLoaderMod
             List<CardAppearanceBehaviour.Appearance> appearanceBehaviour = new List<CardAppearanceBehaviour.Appearance>();
             appearanceBehaviour.Add(CardAppearanceBehaviour.Appearance.RareCardBackground);
 
-            byte[] imgBytes = System.IO.File.ReadAllBytes(Path.Combine(this.Info.Location,"Artwork/eightfuckingbears.png"));
+            byte[] imgBytes = System.IO.File.ReadAllBytes(Path.Combine(this.Info.Location.Replace("CardLoaderMod.dll",""),"Artwork/eightfuckingbears.png"));
             Texture2D tex = new Texture2D(2,2);
             tex.LoadImage(imgBytes);
 
@@ -59,7 +59,7 @@ namespace CardLoaderMod
             lines.Add(line);
             info.abilityLearnedDialogue = new DialogueEvent.LineSet(lines);
 
-            byte[] imgBytes = System.IO.File.ReadAllBytes(Path.Combine(this.Info.Location,"Artwork/new.png"));
+            byte[] imgBytes = System.IO.File.ReadAllBytes(Path.Combine(this.Info.Location.Replace("CardLoaderMod.dll",""),"Artwork/new.png"));
             Texture2D tex = new Texture2D(2,2);
             tex.LoadImage(imgBytes);
 
