@@ -26,11 +26,12 @@ namespace CardLoaderMod
             Logger.LogInfo($"Loaded {PluginName}!");
 
             AddBears();
-            NewAbility ability1 = AddAbility();
-            ChangeWolf(ability1.ability);
+            AddAbility();
+            ChangeWolf();
         }
 
-        private void AddBears(){
+        private void AddBears()
+        {
             List<CardMetaCategory> metaCategories = new List<CardMetaCategory>();
             metaCategories.Add(CardMetaCategory.ChoiceNode);
             metaCategories.Add(CardMetaCategory.Rare);
@@ -68,8 +69,9 @@ namespace CardLoaderMod
             return ability;
     		}
 
-        private void ChangeWolf(Ability ability){
-          List<Ability> abilities = new List<Ability> {ability};
+        private void ChangeWolf()
+        {
+          List<Ability> abilities = new List<Ability> {NewTestAbility.ability};
           new CustomCard("Wolf") {baseAttack=10, abilities=abilities};
         }
 
