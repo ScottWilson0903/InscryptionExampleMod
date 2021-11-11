@@ -64,7 +64,7 @@ namespace CardLoaderMod
             Texture2D tex = new Texture2D(2,2);
             tex.LoadImage(imgBytes);
 
-            NewAbility ability = new NewAbility(info,typeof(NewTestAbility),tex);
+            NewAbility ability = new NewAbility(info,typeof(NewTestAbility),tex,AbilityIdentifier.GetAbilityIdentifier(PluginGuid, info.rulebookName));
             NewTestAbility.ability = ability.ability;
             return ability;
     		}
