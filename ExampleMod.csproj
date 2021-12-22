@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>CardLoaderMod</AssemblyName>
-    <Description>Loads a custom card, and modifies the wolf</Description>
+    <AssemblyName>ExampleMod</AssemblyName>
+    <Description>An example mod for Inscryption API</Description>
     <Version>1.0.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>9.0</LangVersion>
