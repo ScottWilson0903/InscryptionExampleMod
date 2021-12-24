@@ -2,7 +2,11 @@
 ## Example mod for Inscryption API made by Cyantist
 
 This plugin is a BepInEx plugin made for Inscryption to add content using the API by Cyantist.
-Various examples are provided in the Plugin class.
+Examples for the following features are included in the Plugin class:
+- `AddBears()`: custom cards and talking cards
+- `AddAbility()`: custom abilities
+- `ChangeWolf()`: modifying existing cards
+- `AddRegion()`: custom regions and encounters
 
 ## Installation (automated)
 This is the recommended way to install the API on the game.
