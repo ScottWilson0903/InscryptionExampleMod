@@ -19,7 +19,7 @@ namespace CardLoaderMod
     {
         private const string PluginGuid = "cyantist.inscryption.examplemod";
         private const string PluginName = "ExampleMod";
-        private const string PluginVersion = "1.0.0.0";
+        private const string PluginVersion = "1.6.0.0";
 
         private void Awake()
         {
