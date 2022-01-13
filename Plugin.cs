@@ -1,13 +1,8 @@
 using BepInEx;
-using BepInEx.Logging;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
-using System.Linq;
 using System.IO;
 using DiskCardGame;
-using HarmonyLib;
 using UnityEngine;
 using APIPlugin;
 
@@ -57,7 +52,8 @@ namespace CardLoaderMod
             tex.LoadImage(imgBytes);
 
             // Add the card
-            NewCard.Add("Eight_Bears", "8 fucking bears!", 32, 48, metaCategories, CardComplexity.Simple, CardTemple.Nature, description:"Kill this abomination please", bloodCost:3, appearanceBehaviour:appearanceBehaviour, defaultTex:tex, specialAbilities:specialAbilities);
+            NewCard.Add("Eight_Bears", "8 fucking bears!", 32, 48, metaCategories, CardComplexity.Simple, CardTemple.Nature, description: "Kill this abomination please",
+                        bloodCost: 3, appearanceBehaviour: appearanceBehaviour, defaultTex: tex, specialAbilities: specialAbilities);
 
             // Add the talking card behaviour. The name must be the same as the card name!
             NewTalkingCard.Add<EightBearsTalkingCard>("Eight_Bears", EightBearsTalkingCard.GetDictionary());
